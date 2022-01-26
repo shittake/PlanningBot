@@ -16,12 +16,18 @@ public class Interactor {
         String name = scan.nextLine();
         System.out.println("Hello " + name + ". Is this correct?");
 
-        String reply = scan.nextLine().toLowerCase();
-        while (!reply.equals("yes") && !reply.equals("y")) {
-            System.out.print("Previous result deleted. Please re-enter your name: ");
-            name = scan.nextLine();
-            System.out.println("Hello " + name + ". Is this correct?");
-            reply = scan.nextLine().toLowerCase();
+        String reply = scan.nextLine();
+
+
+        while (Checker.yesNoCheck(reply) != 1) {
+            if (Checker.yesNoCheck(reply)== -1) {
+                Checker.invalidInput();
+            } else {
+                System.out.print("Previous result deleted. Please re-enter your name: ");
+                name = scan.nextLine();
+                System.out.println("Hello " + name + ". Is this correct?");
+            }
+            reply = scan.nextLine();
         }
 
         PathSelector pathselector = new PathSelector(name);
