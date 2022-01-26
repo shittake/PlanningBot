@@ -24,5 +24,7 @@ public class Interactor {
             reply = scan.nextLine().toLowerCase();
         }
 
+        PathSelector pathselector = new PathSelector(name);
+        pathselector.run();
     }
 }
