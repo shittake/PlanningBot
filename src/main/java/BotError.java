@@ -7,7 +7,7 @@ public class BotError {
     public BotError(String msg) {
         this.msg = msg;
     }
-    
+
     @Override
     public String toString() {
         return this.msg;
