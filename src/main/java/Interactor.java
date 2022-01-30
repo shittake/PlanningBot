@@ -20,7 +20,7 @@ public class Interactor {
 
 
         while (Checker.yesNoCheck(reply) != 1) {
-            if (Checker.yesNoCheck(reply)== -1) {
+            if (Checker.yesNoCheck(reply)== -1) { // Error should be thrown directly before returning -1
                 Checker.invalidInput();
             } else {
                 System.out.print("Previous result deleted. Please re-enter your name: ");
