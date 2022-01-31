@@ -11,6 +11,8 @@ public class Checker {
         for (int i = 0; i < line.length(); i++) {
             char current = line.charAt(i);
             if (!Character.isAlphabetic(current)) {
+                InvalidInput error = new InvalidInput();
+                System.out.println(error);
                 return -1;
             }
         }
@@ -22,11 +24,9 @@ public class Checker {
         } else if (convert.equals("no") || convert.equals("n")) {
             return 0;
         } else {
+            InvalidInput error = new InvalidInput();
+            System.out.println(error);
             return -1;
         }
-    }
-
-    public static void invalidInput() {
-        System.out.println("Invalid input. Please re-type.");
     }
 }
