@@ -17,17 +17,16 @@ public class Interactor {
         System.out.println("Hello " + name + ". Is this correct?");
 
         String reply = scan.nextLine();
+        int result = Checker.yesNoCheck(reply);
 
-
-        while (Checker.yesNoCheck(reply) != 1) {
-            if (Checker.yesNoCheck(reply)== -1) { // Error should be thrown directly before returning -1
-                Checker.invalidInput();
-            } else {
+        while (result != 1) {
+            if (result == 0) {
                 System.out.print("Previous result deleted. Please re-enter your name: ");
                 name = scan.nextLine();
                 System.out.println("Hello " + name + ". Is this correct?");
             }
             reply = scan.nextLine();
+            result = Checker.yesNoCheck(reply);
         }
 
         PathSelector pathselector = new PathSelector(name);

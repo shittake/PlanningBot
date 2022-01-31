@@ -8,6 +8,6 @@ public class PathSelector {
     }
 
     public void run() {
-        System.out.println(this.name);
+        System.out.println("Hi " + this.name);
     }
 }
