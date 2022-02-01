@@ -29,7 +29,7 @@ public class Interactor {
             result = Checker.yesNoCheck(reply);
         }
 
-        PathSelector pathselector = new PathSelector(name);
+        PathSelector pathselector = new PathSelector(name, scan);
         pathselector.run();
     }
 }
