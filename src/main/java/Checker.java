@@ -11,6 +11,7 @@ public class Checker {
         for (int i = 0; i < line.length(); i++) {
             char current = line.charAt(i);
             if (!Character.isAlphabetic(current)) {
+                // Throw custom InvalidInput Error that is a subclass of the BotError class
                 InvalidInput error = new InvalidInput();
                 System.out.println(error);
                 return -1;
