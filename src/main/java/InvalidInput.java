@@ -3,7 +3,7 @@ package main.java;
 public class InvalidInput extends BotError {
 
     public InvalidInput() {
-        super("Error!");
+        super("Sorry!");
     }
 
     @Override
