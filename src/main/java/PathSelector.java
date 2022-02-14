@@ -31,10 +31,11 @@ public class PathSelector {
     }
 
     public void moveA() {
-        pass;
+        Path current = new PathA(this.name, this.scan);
+        current.run();
     }
 
     public void moveB() {
-        pass;
+        System.out.println("Placeholder");
     }
 }
