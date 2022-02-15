@@ -18,6 +18,10 @@ public class Path {
     public int getInt() {
         return this.scan.nextInt();
     }
+
+    public String getLine() { return this.scan.nextLine(); }
+
+    public double getDouble() { return this.scan.getDouble(); }
     @Override
     public String toString() {
         return "Path ";
