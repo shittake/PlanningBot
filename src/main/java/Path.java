@@ -21,7 +21,7 @@ public class Path {
 
     public String getLine() { return this.scan.nextLine(); }
 
-    public double getDouble() { return this.scan.getDouble(); }
+    public double getDouble() { return this.scan.nextDouble(); }
     @Override
     public String toString() {
         return "Path ";
