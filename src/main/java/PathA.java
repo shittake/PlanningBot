@@ -10,7 +10,13 @@ public class PathA extends Path {
     public void run() {
         super.run();
         System.out.println("To start off, how many events are you planning to conduct in total?");
-        int answer = getInt();
+        String answer = getLine();
+
+        while (!Checker.intChecker(answer)) {
+            BotError error = new InvalidInput();
+            System.out.println(error);
+            answer = getLine();
+        }
     }
 
     @Override

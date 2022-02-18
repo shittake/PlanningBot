@@ -30,4 +30,13 @@ public class Checker {
             return -1;
         }
     }
+
+    public static boolean intChecker(String line) {
+        for (int i = 0; i < line.length(); i++) {
+            if (!Character.isDigit(line.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
