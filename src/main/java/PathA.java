@@ -1,8 +1,10 @@
 package main.java;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PathA extends Path {
 
+    private ArrayList<Interval> lstOfEvents;
     public PathA(String name, Scanner scan) {
         super(name, scan);
     }
@@ -17,8 +19,10 @@ public class PathA extends Path {
             System.out.println(error);
             answer = getLine();
         }
+        System.out.println("You have a total of " + String.valueOf(answer) + " events");
+        collectEvents(answer);
     }
-
+    
     @Override
     public String toString() {
         return super.toString() + "A";
