@@ -13,5 +13,6 @@ public class Interval {
         String[] splitUp = time.split(":");
         int hour = Integer.parseInt(splitUp[0]);
         int minute = Integer.parseInt(splitUp[1]);
+        return hour * 60 + minute;
     }
 }

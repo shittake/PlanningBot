@@ -22,7 +22,7 @@ public class PathA extends Path {
         System.out.println("You have a total of " + String.valueOf(answer) + " events");
         collectEvents(answer);
     }
-    
+
     @Override
     public String toString() {
         return super.toString() + "A";
