@@ -23,6 +23,19 @@ public class PathA extends Path {
         collectEvents(answer);
     }
 
+    public void collectEvents(int answer) {
+        for (int i = 0; i < answer; i++) {
+            // For now, assume all valid inputs
+            System.out.println("Please key in the time which Event " + String.valueOf(i+1) + " starts.");
+            String startTime = getLine();
+            System.out.println("Please key in the time which Event " + String.valueOf(i+1) + " ends.");
+            String endTime = getLine();
+
+            Interval event = new Interval(startTime, endTime);
+            this.lstOfEvents.add(event);
+            
+        }
+    }
     @Override
     public String toString() {
         return super.toString() + "A";
