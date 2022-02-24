@@ -7,6 +7,7 @@ public class PathA extends Path {
     private ArrayList<Interval> lstOfEvents;
     public PathA(String name, Scanner scan) {
         super(name, scan);
+        this.lstOfEvents = new ArrayList<>();
     }
 
     public void run() {
@@ -20,7 +21,7 @@ public class PathA extends Path {
             answer = getLine();
         }
         System.out.println("You have a total of " + String.valueOf(answer) + " events");
-        collectEvents(answer);
+        collectEvents(Integer.valueOf(answer));
     }
 
     public void collectEvents(int answer) {
@@ -33,7 +34,15 @@ public class PathA extends Path {
 
             Interval event = new Interval(startTime, endTime);
             this.lstOfEvents.add(event);
-            
+
+            printEvents();
+        }
+    }
+
+    public void printEvents() {
+        for (int i = 0; i < this.lstOfEvents.size(); i++) {
+            System.out.print("Event " + String.valueOf(i+1) + ": ");
+            System.out.println(this.lstOfEvents.get(i));
         }
     }
     @Override
