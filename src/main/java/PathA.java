@@ -26,19 +26,24 @@ public class PathA extends Path {
 
     public void collectEvents(int answer) {
         while (this.lstOfEvents.size() < answer) {// modify this to while loop in the future
-            // For now, assume all valid inputs
-            int currentEvent = this.lstOfEvents.size() + 1;
-
-            System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " starts.");
-            String startTime = getLine();
-            System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " ends.");
-            String endTime = getLine();
-
-            Interval event = new Interval(startTime, endTime);
+            Interval event = createEvent();
             this.lstOfEvents.add(event);
-
             printEvents();
         }
+    }
+
+    public Interval createEvent() {
+        // Assume all times provided are valid for now
+        int currentEvent = this.lstOfEvents.size() + 1;
+
+        System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " starts.");
+        String startTime = getLine();
+        System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " ends.");
+        String endTime = getLine();
+
+        Interval event = new Interval(startTime, endTime);
+
+        return event;
     }
 
     public void printEvents() {
