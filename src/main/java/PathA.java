@@ -25,11 +25,13 @@ public class PathA extends Path {
     }
 
     public void collectEvents(int answer) {
-        for (int i = 0; i < answer; i++) { // modify this to while loop in the future
+        while (this.lstOfEvents.size() < answer) {// modify this to while loop in the future
             // For now, assume all valid inputs
-            System.out.println("Please key in the time which Event " + String.valueOf(i+1) + " starts.");
+            int currentEvent = this.lstOfEvents.size() + 1;
+
+            System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " starts.");
             String startTime = getLine();
-            System.out.println("Please key in the time which Event " + String.valueOf(i+1) + " ends.");
+            System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " ends.");
             String endTime = getLine();
 
             Interval event = new Interval(startTime, endTime);
@@ -56,16 +58,24 @@ public class PathA extends Path {
         while (result != 0) {
             if (result == 1) {
                 System.out.print("Which event would you like to remove? Type the event number here: ");
+
                 String toBeRemoved = getLine();
-                int index = Integer.parseInt(toBeRemoved);  // assume this is valid for now
-                System.out.println("Event " + String.valueOf(index) + " to be removed."); // put this into another method
-                this.lstOfEvents.remove(index - 1);
+                removeEvents(toBeRemoved);
+
                 System.out.println("Would you still like to remove any events?");
             }
             reply = getLine();
             result = Checker.yesNoCheck(reply);
         }
     }
+
+    public void removeEvents(String toBeRemoved) {
+        // assume valid inputs for now
+        int index = Integer.parseInt(toBeRemoved);  // assume this is valid for now
+        System.out.println("Event " + String.valueOf(index) + " is removed."); // put this into another method
+        this.lstOfEvents.remove(index - 1);
+    }
+
     @Override
     public String toString() {
         return super.toString() + "A";
