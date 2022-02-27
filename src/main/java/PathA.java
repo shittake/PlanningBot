@@ -5,9 +5,12 @@ import java.util.Scanner;
 public class PathA extends Path {
 
     private ArrayList<Interval> lstOfEvents;
+    private int numberOfPlaces;
+
     public PathA(String name, Scanner scan) {
         super(name, scan);
         this.lstOfEvents = new ArrayList<>();
+        this.numberOfPlaces = 0;
     }
 
     public void run() {
@@ -22,6 +25,7 @@ public class PathA extends Path {
         }
         System.out.println("You have a total of " + String.valueOf(answer) + " events");
         collectEvents(Integer.valueOf(answer));
+        allocateEvents();
     }
 
     public void collectEvents(int answer) {
@@ -79,6 +83,11 @@ public class PathA extends Path {
         int index = Integer.parseInt(toBeRemoved);  // assume this is valid for now
         System.out.println("Event " + String.valueOf(index) + " is removed."); // put this into another method
         this.lstOfEvents.remove(index - 1);
+    }
+
+    public void allocateEvents() {
+        int[] classroomAllocated = new int[this.lstOfEvents.size()]; // stores which classroom the event is allocated to
+        TreeSet<Interval> set;
     }
 
     @Override
