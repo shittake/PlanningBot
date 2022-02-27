@@ -26,6 +26,7 @@ public class PathA extends Path {
         }
         System.out.println("You have a total of " + answer + " events.");
 
+        collectEvents(Integer.valueOf(answer));
         System.out.println("How many locations do you have available?"); // All these should be better abstracted
         answer = getLine();
 
@@ -37,7 +38,6 @@ public class PathA extends Path {
         System.out.println("You have a total of " + answer + " locations.");
         this.numberOfPlaces = Integer.parseInt(answer);
 
-        collectEvents(Integer.valueOf(answer));
         allocateEvents();
     }
 
@@ -100,7 +100,16 @@ public class PathA extends Path {
 
     public void allocateEvents() {
         int[] classroomAllocated = new int[this.lstOfEvents.size()]; // stores which classroom the event is allocated to
-        TreeSet<Interval> set;
+        TreeSet<Interval> set = new TreeSet<>();
+
+        for (int i = 0; i < this.numberOfPlaces; i++){
+            set.add(new Interval(i));
+        }
+
+        while (!set.isEmpty()) {
+            System.out.println(set.first());
+            set.remove(set.first());
+        }
     }
 
     @Override
