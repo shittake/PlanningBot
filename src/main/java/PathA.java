@@ -107,10 +107,14 @@ public class PathA extends Path {
 
         TreeSet<Interval> allEvents = new TreeSet<>();
         for (int i = 0; i < this.lstOfEvents.size(); i++) {
-            allEvents.add(this.lstOfEvents.get(i));
+            Interval currentEvent = this.lstOfEvents.get(i);
+            currentEvent.setEventNo(i); // 0-indexed for easier code readability
+            allEvents.add(currentEvent);
         }
 
         
+
+
 
     }
 

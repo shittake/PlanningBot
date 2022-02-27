@@ -3,6 +3,7 @@ package main.java;
 public class Interval implements Comparable<Interval> {
 
     private int start, end;
+    private int eventNo;
     private String startString, endString;
 
     public Interval(String start, String end) {
@@ -10,6 +11,7 @@ public class Interval implements Comparable<Interval> {
         this.endString = end;
         this.start = convert(start);
         this.end = convert(end);
+        this.eventNo = 0;
     }
 
 
@@ -18,6 +20,10 @@ public class Interval implements Comparable<Interval> {
         int hour = Integer.parseInt(splitUp[0]);
         int minute = Integer.parseInt(splitUp[1]);
         return hour * 60 + minute;
+    }
+
+    public void setEventNo(int number) {
+        this.eventNo = number;
     }
 
     @Override
