@@ -100,16 +100,13 @@ public class PathA extends Path {
 
     public void allocateEvents() {
         int[] classroomAllocated = new int[this.lstOfEvents.size()]; // stores which classroom the event is allocated to
-        TreeSet<Interval> set = new TreeSet<>();
+        TreeSet<AvailableLocation> set = new TreeSet<>();
 
         for (int i = 0; i < this.numberOfPlaces; i++){
-            set.add(new Interval(i));
+            set.add(new AvailableLocation(i));
         }
 
-        while (!set.isEmpty()) {
-            System.out.println(set.first());
-            set.remove(set.first());
-        }
+
     }
 
     @Override

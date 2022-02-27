@@ -12,12 +12,6 @@ public class Interval implements Comparable<Interval> {
         this.end = convert(end);
     }
 
-    public Interval(int indexOfClassroom) {
-        this.startString = String.valueOf(indexOfClassroom);
-        this.endString = "0";
-        this.start = indexOfClassroom;
-        this.end = 0;
-    }
 
     public int convert(String time) {
         String[] splitUp = time.split(":");
