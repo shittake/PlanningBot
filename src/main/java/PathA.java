@@ -1,6 +1,7 @@
 package main.java;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class PathA extends Path {
 
@@ -23,7 +24,19 @@ public class PathA extends Path {
             System.out.println(error);
             answer = getLine();
         }
-        System.out.println("You have a total of " + String.valueOf(answer) + " events");
+        System.out.println("You have a total of " + answer + " events.");
+
+        System.out.println("How many locations do you have available?"); // All these should be better abstracted
+        answer = getLine();
+
+        while (!Checker.intChecker(answer)) {
+            BotError error = new InvalidInput();
+            System.out.println(error);
+            answer = getLine();
+        }
+        System.out.println("You have a total of " + answer + " locations.");
+        this.numberOfPlaces = Integer.parseInt(answer);
+
         collectEvents(Integer.valueOf(answer));
         allocateEvents();
     }
