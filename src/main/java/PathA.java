@@ -135,7 +135,15 @@ public class PathA extends Path {
                 allLocations.add(possibleLocation);
             }
         }
-        System.out.println(Arrays.toString(classroomAllocated));
+        for (int i = 0; i < classroomAllocated.length; i++) {
+            System.out.print("Event " + String.valueOf(i + 1));
+            if (classroomAllocated[i] != -1) {
+                System.out.print(" can be held in Location ");
+                System.out.println(classroomAllocated[i]);
+            } else {
+                System.out.println(" cannot be held anywhere.");
+            }
+        }
     }
 
     @Override
