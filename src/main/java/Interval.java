@@ -26,6 +26,18 @@ public class Interval implements Comparable<Interval> {
         this.eventNo = number;
     }
 
+    public int getStartTime() {
+        return this.start;
+    }
+
+    public int getEndTime() {
+        return this.end;
+    }
+
+    public int getEventNo() {
+        return this.eventNo;
+    }
+
     @Override
     public String toString() {
         return this.startString + " - " + this.endString;
@@ -34,9 +46,9 @@ public class Interval implements Comparable<Interval> {
     @Override
     public int compareTo(Interval other) {
         if (other.end < this.end) return 1;
-        else if (other.end > this.end) return 1;
+        else if (other.end > this.end) return -1;
         else if (other.start > this.start) return 1;
         else if (other.start < this.start) return -1;
-        else return 0;
+        else return this.eventNo - other.eventNo;
     }
 }
