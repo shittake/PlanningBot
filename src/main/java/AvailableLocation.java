@@ -10,6 +10,8 @@ public class AvailableLocation implements Comparable<AvailableLocation> {
         this.availableFrom = 0;
     }
 
+    
+
     public String convertToTime() {
         int minutes = this.availableFrom % 60;
         int hours = this.availableFrom / 60;
@@ -28,6 +30,8 @@ public class AvailableLocation implements Comparable<AvailableLocation> {
     public int compareTo(AvailableLocation other) {
         if (other.availableFrom < this.availableFrom) return 1;
         else if (other.availableFrom > this.availableFrom) return -1;
-        else return other.classroomNumber - this.classroomNumber;
+        else if (other.classroomNumber < this.classroomNumber) return 1;
+        else if (other.classroomNumber > this.classroomNumber) return -1;
+        else return 0;
     }
 }
