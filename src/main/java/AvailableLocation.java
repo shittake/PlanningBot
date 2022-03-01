@@ -5,12 +5,23 @@ public class AvailableLocation implements Comparable<AvailableLocation> {
     private int classroomNumber;
     private int availableFrom;
 
-    public AvailableLocation(int indexOfClassoom) {
-        this.classroomNumber = indexOfClassoom + 1;
+    public AvailableLocation(int indexOfClassroom) {
+        this.classroomNumber = indexOfClassroom + 1;
         this.availableFrom = 0;
     }
 
-    
+    public AvailableLocation(int indexOfClassroom, int endingTime) {
+        this.classroomNumber = indexOfClassroom;
+        this.availableFrom = endingTime;
+    }
+
+    public int getClassroomNumber() {
+        return this.classroomNumber;
+    }
+
+    public void update(Interval event) {
+        this.availableFrom = event.getEndTime();
+    }
 
     public String convertToTime() {
         int minutes = this.availableFrom % 60;

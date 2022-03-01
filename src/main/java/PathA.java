@@ -2,6 +2,7 @@ package main.java;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.TreeSet;
+import java.util.Arrays;
 
 public class PathA extends Path {
 
@@ -111,11 +112,30 @@ public class PathA extends Path {
             currentEvent.setEventNo(i); // 0-indexed for easier code readability
             allEvents.add(currentEvent);
         }
+        System.out.println(allEvents.size());
+        while (!allEvents.isEmpty()) {
+            Interval currentEvent = allEvents.first();
+            //System.out.println(currentEvent);
+            allEvents.remove(currentEvent);
+            System.out.println(allEvents.size());
 
-        
+            // We want to find if there are any locations available, with an available timing that is closest to our event's start time
+            // This can maximize the number of events we can carry out
+            AvailableLocation dummyLocation = new AvailableLocation(Integer.MAX_VALUE, currentEvent.getStartTime());
 
+            // Assuming no delays and the location is immediately available after the previous event has concluded
+            AvailableLocation possibleLocation = allLocations.floor(dummyLocation);
 
-
+            if (possibleLocation == null) {
+                classroomAllocated[currentEvent.getEventNo()] = -1;
+            } else {
+                classroomAllocated[currentEvent.getEventNo()] = possibleLocation.getClassroomNumber();
+                allLocations.remove(possibleLocation);
+                possibleLocation.update(currentEvent);
+                allLocations.add(possibleLocation);
+            }
+        }
+        System.out.println(Arrays.toString(classroomAllocated));
     }
 
     @Override
