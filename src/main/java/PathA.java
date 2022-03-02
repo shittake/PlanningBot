@@ -2,7 +2,6 @@ package main.java;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.TreeSet;
-import java.util.Arrays;
 
 public class PathA extends Path {
 
@@ -56,19 +55,19 @@ public class PathA extends Path {
 
         System.out.println("What is the name of Event " + String.valueOf(currentEvent) + "?");
         String name = getLine();
-        System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " starts.");
+        System.out.println("Please key in the time which " + name + " starts.");
         String startTime = getLine();
-        System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " ends.");
+        System.out.println("Please key in the time which " + name + " ends.");
         String endTime = getLine();
 
-        Interval event = new Interval(startTime, endTime);
+        Interval event = new Interval(name, startTime, endTime);
 
         return event;
     }
 
     public void printEvents() {
         for (int i = 0; i < this.lstOfEvents.size(); i++) {
-            System.out.print("Event " + String.valueOf(i+1) + ": ");
+            System.out.print("[Event " + String.valueOf(i+1) + "] ");
             System.out.println(this.lstOfEvents.get(i));
         }
         askRemoveEvents();
@@ -150,7 +149,7 @@ public class PathA extends Path {
             }
         }
     }
-    }
+
     @Override
     public String toString() {
         return super.toString() + "A";

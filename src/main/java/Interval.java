@@ -4,9 +4,11 @@ public class Interval implements Comparable<Interval> {
 
     private int start, end;
     private int eventNo;
+    private String name;
     private String startString, endString;
 
-    public Interval(String start, String end) {
+    public Interval(String name, String start, String end) {
+        this.name = name;
         this.startString = start;
         this.endString = end;
         this.start = convert(start);
@@ -40,7 +42,7 @@ public class Interval implements Comparable<Interval> {
 
     @Override
     public String toString() {
-        return this.startString + " - " + this.endString;
+        return this.name + ": " + this.startString + " - " + this.endString;
     }
 
     @Override
