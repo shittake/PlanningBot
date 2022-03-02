@@ -101,7 +101,6 @@ public class PathA extends Path {
     }
 
     public void allocateEvents() {
-        int[] classroomAllocated = new int[this.lstOfEvents.size()]; // stores which classroom the event is allocated to
         TreeSet<AvailableLocation> allLocations = new TreeSet<>();
         for (int i = 0; i < this.numberOfPlaces; i++){
             allLocations.add(new AvailableLocation(i));
@@ -110,7 +109,6 @@ public class PathA extends Path {
         TreeSet<Interval> allEvents = new TreeSet<>();
         for (int i = 0; i < this.lstOfEvents.size(); i++) {
             Interval currentEvent = this.lstOfEvents.get(i);
-            currentEvent.setEventNo(i); // 0-indexed for easier code readability
             allEvents.add(currentEvent);
         }
 
@@ -127,26 +125,20 @@ public class PathA extends Path {
             AvailableLocation possibleLocation = allLocations.floor(dummyLocation);
 
             if (possibleLocation == null) {
-                classroomAllocated[currentEvent.getEventNo()] = -1;
+                currentEvent.setLocation(-1);
             } else {
-                classroomAllocated[currentEvent.getEventNo()] = possibleLocation.getClassroomNumber();
+                currentEvent.setLocation(possibleLocation);
                 allLocations.remove(possibleLocation);
                 possibleLocation.update(currentEvent);
                 allLocations.add(possibleLocation);
             }
         }
-        printAllocations(classroomAllocated);
+        printAllocations();
     }
 
-    public void printAllocations(int[] classroomAllocated) {
-        for (int i = 0; i < classroomAllocated.length; i++) {
-            System.out.print("Event " + String.valueOf(i + 1));
-            if (classroomAllocated[i] != -1) {
-                System.out.print(" can be held in Location ");
-                System.out.println(classroomAllocated[i]);
-            } else {
-                System.out.println(" cannot be held anywhere.");
-            }
+    public void printAllocations() {
+        for (int i = 0; i < this.lstOfEvents.size(); i++) {
+            System.out.println(this.lstOfEvents.get(i));
         }
     }
 

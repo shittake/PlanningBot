@@ -3,9 +3,9 @@ package main.java;
 public class Interval implements Comparable<Interval> {
 
     private int start, end;
-    private int eventNo;
     private String name;
     private String startString, endString;
+    private AvailableLocation availableLocation;
 
     public Interval(String name, String start, String end) {
         this.name = name;
@@ -13,7 +13,7 @@ public class Interval implements Comparable<Interval> {
         this.endString = end;
         this.start = convert(start);
         this.end = convert(end);
-        this.eventNo = 0;
+        this.availableLocation = null;
     }
 
 
@@ -24,9 +24,6 @@ public class Interval implements Comparable<Interval> {
         return hour * 60 + minute;
     }
 
-    public void setEventNo(int number) {
-        this.eventNo = number;
-    }
 
     public int getStartTime() {
         return this.start;
@@ -36,13 +33,28 @@ public class Interval implements Comparable<Interval> {
         return this.end;
     }
 
-    public int getEventNo() {
-        return this.eventNo;
+
+    public void setLocation(int dummy) {
+        this.availableLocation = new AvailableLocation(-1);
+    }
+
+    public void setLocation(AvailableLocation possibleLocation) {
+        this.availableLocation = possibleLocation;
     }
 
     @Override
     public String toString() {
-        return this.name + ": " + this.startString + " - " + this.endString;
+        String front = this.name + " (" + this.startString + " - " + this.endString + ")";
+        if (this.availableLocation != null) {
+            int locationNo = this.availableLocation.getClassroomNumber();
+            if (locationNo == 0) {
+                return front + " cannot be held anywhere.";
+            } else {
+                return front + " can be held in Location " + String.valueOf(locationNo);
+            }
+        } else {
+            return front; 
+        }
     }
 
     @Override
@@ -51,6 +63,6 @@ public class Interval implements Comparable<Interval> {
         else if (other.end > this.end) return -1;
         else if (other.start > this.start) return 1;
         else if (other.start < this.start) return -1;
-        else return this.eventNo - other.eventNo;
+        else return 0;
     }
 }
