@@ -54,6 +54,8 @@ public class PathA extends Path {
         // Assume all times provided are valid for now
         int currentEvent = this.lstOfEvents.size() + 1;
 
+        System.out.println("What is the name of Event " + String.valueOf(currentEvent) + "?");
+        String name = getLine();
         System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " starts.");
         String startTime = getLine();
         System.out.println("Please key in the time which Event " + String.valueOf(currentEvent) + " ends.");
@@ -112,12 +114,11 @@ public class PathA extends Path {
             currentEvent.setEventNo(i); // 0-indexed for easier code readability
             allEvents.add(currentEvent);
         }
-        System.out.println(allEvents.size());
+
         while (!allEvents.isEmpty()) {
             Interval currentEvent = allEvents.first();
             //System.out.println(currentEvent);
             allEvents.remove(currentEvent);
-            System.out.println(allEvents.size());
 
             // We want to find if there are any locations available, with an available timing that is closest to our event's start time
             // This can maximize the number of events we can carry out
@@ -135,6 +136,10 @@ public class PathA extends Path {
                 allLocations.add(possibleLocation);
             }
         }
+        printAllocations(classroomAllocated);
+    }
+
+    public void printAllocations(int[] classroomAllocated) {
         for (int i = 0; i < classroomAllocated.length; i++) {
             System.out.print("Event " + String.valueOf(i + 1));
             if (classroomAllocated[i] != -1) {
@@ -145,7 +150,7 @@ public class PathA extends Path {
             }
         }
     }
-
+    }
     @Override
     public String toString() {
         return super.toString() + "A";
