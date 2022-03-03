@@ -124,9 +124,9 @@ public class PathA extends Path {
             // Assuming no delays and the location is immediately available after the previous event has concluded
             AvailableLocation possibleLocation = allLocations.floor(dummyLocation);
 
-            if (possibleLocation == null) {
+            if (possibleLocation == null) { // if there are no classrooms available at this time
                 currentEvent.setLocation(-1);
-            } else {
+            } else { // find the classroom with the available time that is nearest to when this event starts
                 currentEvent.setLocation(possibleLocation);
                 allLocations.remove(possibleLocation);
                 possibleLocation.update(currentEvent);

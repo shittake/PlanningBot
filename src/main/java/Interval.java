@@ -53,7 +53,7 @@ public class Interval implements Comparable<Interval> {
                 return front + " can be held in Location " + String.valueOf(locationNo);
             }
         } else {
-            return front; 
+            return front;
         }
     }
 
