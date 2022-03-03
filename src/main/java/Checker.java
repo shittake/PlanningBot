@@ -1,5 +1,7 @@
 package main.java;
 
+import org.omg.CORBA.DynAnyPackage.Invalid;
+
 public class Checker {
 
     // Returns 1 if the user typed "yes" or "y"
@@ -38,5 +40,31 @@ public class Checker {
             }
         }
         return true;
+    }
+
+    public static boolean validTime(String time) {
+        if (!time.contains(":")) {
+            InvalidInput error = new InvalidInput();
+            System.out.println(error);
+        } else {
+            String[] split = time.split(":");
+            if (split.length != 2 || !intChecker(split[0]) || !intChecker(split[1])) {
+                InvalidInput error = new InvalidInput();
+                System.out.println(error);
+            } else if (split[1].length() != 2) {
+                InvalidInput error = new InvalidInput();
+                System.out.println(error);
+            } else {
+                int hour = Integer.parseInt(split[0]);
+                int minute = Integer.parseInt(split[1]);
+                if (hour < 0 || hour >= 24 || minute < 0 || minute >= 60) {
+                    InvalidInput error = new TimeOutOfBounds();
+                    System.out.println(error);
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
