@@ -42,7 +42,7 @@ public class PathA extends Path {
     }
 
     public void collectEvents(int answer) {
-        while (this.lstOfEvents.size() < answer) {// modify this to while loop in the future
+        while (this.lstOfEvents.size() < answer) {
             Interval event = createEvent();
             this.lstOfEvents.add(event);
             printEvents();
@@ -57,8 +57,15 @@ public class PathA extends Path {
         String name = getLine();
         System.out.println("Please key in the time which " + name + " starts.");
         String startTime = getLine();
+        while (!Checker.validTime(startTime)) {
+            startTime = getLine();
+        }
         System.out.println("Please key in the time which " + name + " ends.");
         String endTime = getLine();
+        while (!Checker.validTime(endTime)) {
+            endTime = getLine();
+        }
+        // need additional check if endTime > startTime
 
         Interval event = new Interval(name, startTime, endTime);
 
