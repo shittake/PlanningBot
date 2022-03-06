@@ -67,4 +67,28 @@ public class Checker {
         }
         return false;
     }
+
+    public static boolean validTime(String start, String end) {
+        if (!validTime(end)) {
+            return false;
+        } else {
+            String[] splitUpStart = start.split(":");
+            String[] splitUpEnd = end.split(":");
+            int hour = Integer.parseInt(splitUpStart[0]);
+            int minute = Integer.parseInt(splitUpStart[1]);
+            int startTime = hour * 60 + minute;
+
+            hour = Integer.parseInt(splitUpEnd[0]);
+            minute = Integer.parseInt(splitUpEnd[1]);
+            int endTime = hour * 60 + minute;
+
+            if (endTime <= startTime) {
+                InvalidInput error = new TimeConflict();
+                System.out.println(error);
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
 }

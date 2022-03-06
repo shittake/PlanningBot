@@ -62,10 +62,9 @@ public class PathA extends Path {
         }
         System.out.println("Please key in the time which " + name + " ends.");
         String endTime = getLine();
-        while (!Checker.validTime(endTime)) {
+        while (!Checker.validTime(startTime, endTime)) {
             endTime = getLine();
         }
-        // need additional check if endTime > startTime
 
         Interval event = new Interval(name, startTime, endTime);
 
