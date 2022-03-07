@@ -17,6 +17,8 @@ public class PathSelector {
         System.out.println("Path A: Events can be conducted back-to-back without any downtime required.");
         System.out.println("Path B: There is downtime required after each event (cleaning up / rest time) etc.");
         System.out.println("This is caps sensitive!");
+        System.out.println();
+
         String reply = scan.nextLine();
         while (!reply.equals("A") && !reply.equals("B")) {
             InvalidInput error = new InvalidInput();

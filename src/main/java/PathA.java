@@ -42,6 +42,11 @@ public class PathA extends Path {
     }
 
     public void collectEvents(int answer) {
+        System.out.println();
+        System.out.println("Time should be given in the format HH:MM. For example, midnight will be given as 00:00. 1.06pm in the afternoon will be given as 13:06.");
+        System.out.println("You have to follow this format strictly.");
+        System.out.println();
+
         while (this.lstOfEvents.size() < answer) {
             Interval event = createEvent();
             this.lstOfEvents.add(event);
