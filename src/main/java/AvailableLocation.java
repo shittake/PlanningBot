@@ -4,10 +4,12 @@ public class AvailableLocation implements Comparable<AvailableLocation> {
 
     private int classroomNumber;
     private int availableFrom;
+    private String name;
 
-    public AvailableLocation(int indexOfClassroom) {
+    public AvailableLocation(int indexOfClassroom, String name) {
         this.classroomNumber = indexOfClassroom + 1;
         this.availableFrom = 0;
+        this.name = name;
     }
 
     public AvailableLocation(int indexOfClassroom, int endingTime) {
@@ -18,6 +20,8 @@ public class AvailableLocation implements Comparable<AvailableLocation> {
     public int getClassroomNumber() {
         return this.classroomNumber;
     }
+
+    public String getClassroomName() { return this.name; }
 
     public void update(Interval event) {
         this.availableFrom = event.getEndTime();
