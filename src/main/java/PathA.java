@@ -7,11 +7,13 @@ public class PathA extends Path {
 
     private ArrayList<Interval> lstOfEvents;
     private int numberOfPlaces;
+    private ArrayList<String> namesOfLocations;
 
     public PathA(String name, Scanner scan) {
         super(name, scan);
         this.lstOfEvents = new ArrayList<>();
         this.numberOfPlaces = 0;
+        this.namesOfLocations = new ArrayList<>();
     }
 
     public void run() {
@@ -37,10 +39,23 @@ public class PathA extends Path {
         }
         System.out.println("You have a total of " + answer + " locations.");
         this.numberOfPlaces = Integer.parseInt(answer);
+        collectLocations();
 
         allocateEvents();
     }
 
+    public void collectLocations() {
+        while (this.namesOfLocations.size() < this.numberOfPlaces) {
+            System.out.println("What is the name of Location " + String.valueOf(this.namesOfLocations.size() +1) +"?");
+            String nameOfPlace = getLine();
+            if (this.namesOfLocations.contains(nameOfPlace)) {
+                System.out.println("Repeated name!");   // write as error class
+            } else {
+                this.namesOfLocations.add(nameOfPlace);
+                System.out.println(nameOfPlace + " added!");
+            }
+        }
+    }
     public void collectEvents(int answer) {
         System.out.println();
         System.out.println("Time should be given in the format HH:MM. For example, midnight will be given as 00:00. 1.06pm in the afternoon will be given as 13:06.");
@@ -114,7 +129,7 @@ public class PathA extends Path {
     public void allocateEvents() {
         TreeSet<AvailableLocation> allLocations = new TreeSet<>();
         for (int i = 0; i < this.numberOfPlaces; i++){
-            allLocations.add(new AvailableLocation(i));
+            allLocations.add(new AvailableLocation(i, this.namesOfLocations.get(i)));
         }
 
         TreeSet<Interval> allEvents = new TreeSet<>();
@@ -148,6 +163,7 @@ public class PathA extends Path {
     }
 
     public void printAllocations() {
+        System.out.println();
         for (int i = 0; i < this.lstOfEvents.size(); i++) {
             System.out.println(this.lstOfEvents.get(i));
         }

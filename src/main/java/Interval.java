@@ -35,7 +35,7 @@ public class Interval implements Comparable<Interval> {
 
 
     public void setLocation(int dummy) {
-        this.availableLocation = new AvailableLocation(-1);
+        this.availableLocation = new AvailableLocation(-1, "dummy");
     }
 
     public void setLocation(AvailableLocation possibleLocation) {
@@ -46,11 +46,12 @@ public class Interval implements Comparable<Interval> {
     public String toString() {
         String front = this.name + " (" + this.startString + " - " + this.endString + ")";
         if (this.availableLocation != null) {
+            String locationName = this.availableLocation.getClassroomName();
             int locationNo = this.availableLocation.getClassroomNumber();
             if (locationNo == 0) {
                 return front + " cannot be held anywhere.";
             } else {
-                return front + " can be held in Location " + String.valueOf(locationNo);
+                return front + " can be held in " + locationName;
             }
         } else {
             return front;
